@@ -9,9 +9,6 @@ app.use(middlewares);
 
 // routes
 app.use('/api', routes);
-app.get('/', (req, res) => {
-	res.json({ nuu: 123 });
-});
 
 // error handler
 
