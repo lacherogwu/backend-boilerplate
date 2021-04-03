@@ -1,3 +1,4 @@
+require('dotenv').config();
 require('./globals');
 const app = require('./app');
 

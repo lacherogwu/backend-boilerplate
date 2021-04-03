@@ -1,7 +1,12 @@
 class AppError extends Error {
-	constructor() {
+	constructor(message, statusCode, data = undefined) {
 		super();
-		console.log('nuuu');
+		this.message = message;
+		this.statusCode = statusCode;
+		this.isOperational = true;
+		this.data = data;
+
+		Error.captureStackTrace(this, this.constructor);
 	}
 }
 
