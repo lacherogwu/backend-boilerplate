@@ -12,6 +12,8 @@ for e.g. get_sample, post_login
 ### Routes
 
 There are 2 modes in routes: strict | flexible
+You can configure the mode by editing the "mode" variable on /routes/index.js
+
 strict mode:
 
 - no middlewares can be applied, and need to configure
@@ -57,9 +59,13 @@ const middlewares = [middleware1, middleware2]; // global middlewares
 ### Env configuration
 
 Copy the .env.example file and rename the file to .env
+
 NODE_ENV = production/development
+
 PORT = application port
+
 DB_URI = mongodb uri
+
 JWT_SECRET = a random string generated (do not share/use this string anywhere else), you can use https://www.uuidgenerator.net/ to generate a random secured string
 
 ## Development
