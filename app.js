@@ -12,7 +12,9 @@ const defaultPath = 'api';
 app.use(helmet()); // set secure headers
 
 // health check
-app.get(`/${defaultPath}/healthcheck`, (req, res, next) => AppResponse(res, 200, 'Application is running successfully'));
+app.get(`/${defaultPath}/healthcheck`, (req, res, next) =>
+	AppResponse(res, 200, 'application is running successfully')
+);
 
 // middlewares
 app.use(middlewares);
@@ -25,6 +27,7 @@ app.all('*', (req, res, next) => {
 	// 404 Not Found
 	next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
+
 app.use(errorHandler); // Global Error Handling Middleware
 
 module.exports = app;

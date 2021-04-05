@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const validation = require('../utils/validation');
+const validation = require('../utils/validations');
 const bcrypt = require('bcrypt');
 
 const Schmea = mongoose.Schema;
@@ -34,7 +34,8 @@ modelSchema.pre('save', async function (next) {
 modelSchema.statics.login = async function (email, password) {
 	const user = await this.findOne({ email });
 	const passwordMatch = await bcrypt.compare(password, user?.password || '');
-	if (!user || !passwordMatch) throw new AppError('email address or password is incorrect', 401);
+	if (!user || !passwordMatch)
+		throw new AppError('email address or password is incorrect', 401);
 
 	return user;
 };

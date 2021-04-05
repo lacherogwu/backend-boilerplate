@@ -1,9 +1,12 @@
 const router = require('express').Router();
 const { getController } = require('../utils');
 const controller = getController(__filename);
+const authentication = require('../middlewares/authentication');
 
 // route middleware configuration || funcName: [middlewares]
-const md = {};
+const md = {
+	get_authenticate: [authentication],
+};
 
 Object.entries(controller).forEach(([key, value]) => {
 	const [method, funcName] = key.split('_');

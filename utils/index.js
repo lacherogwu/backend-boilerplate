@@ -1,7 +1,9 @@
 const fs = require('fs');
 
-const mapDirFiles = (path, type) => {
-	const files = fs.readdirSync(path).filter(i => i !== 'index.js');
+const mapDirFiles = (path, type, filter) => {
+	const files = fs
+		.readdirSync(path)
+		.filter(i => (filter ? i.includes(`${filter}_`) : i !== 'index.js'));
 
 	switch (type) {
 		case 'values':
