@@ -8,7 +8,12 @@ const dbURI = process.env.DB_URI;
 
 (async () => {
 	// db connection
-	await mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true });
+	await mongoose.connect(dbURI, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useFindAndModify: false,
+		useCreateIndex: true,
+	});
 	app.listen(port, () => console.log(`listening at http://localhost:${port}`));
 })();
 
