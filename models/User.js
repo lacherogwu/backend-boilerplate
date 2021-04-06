@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const validation = require('../utils/validations');
 const bcrypt = require('bcrypt');
 
-const Schmea = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-const modelSchema = new Schmea({
+const modelSchema = new Schema({
 	email: {
 		type: String,
 		required: true,

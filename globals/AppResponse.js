@@ -7,7 +7,7 @@ module.exports = (res, status, data = {}, message) => {
 	res.status(status || 200).json({
 		success: true,
 		message,
-		results: typeof data === 'object' ? data.length : undefined,
+		results: typeof data === 'object' ? data?.length : undefined,
 		data,
 	});
 };
