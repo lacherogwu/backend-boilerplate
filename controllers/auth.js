@@ -38,9 +38,7 @@ const post_login = catchAsync(async (req, res, next) => {
 	AppResponse(res, 200, user);
 });
 
-const get_authenticate = catchAsync(async (req, res, next) =>
-	AppResponse(res, 200, res.locals.user)
-);
+const get_authenticate = catchAsync(async (req, res, next) => AppResponse(res, 200, res.locals.user));
 
 const get_logout = catchAsync(async (req, res, next) => {
 	res.cookie('jwt', '', { maxAge: 1 });

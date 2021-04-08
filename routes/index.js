@@ -21,9 +21,7 @@ switch (mode) {
 
 	default: {
 		// flexible
-		files.forEach(file =>
-			Object.entries(file).forEach(([key, value]) => router.use(`/${key}`, value))
-		);
+		files.forEach(file => Object.entries(file).forEach(([key, value]) => router.use(`/${key}`, value)));
 	}
 }
 
