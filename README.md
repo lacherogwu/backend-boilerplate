@@ -96,6 +96,10 @@ With code:
 const docs = await crud.find(false, { title }, 'title description');
 ```
 
+### Apis
+
+You can use the Api class to create your own api controller
+
 ### Env configuration
 
 Copy the .env.example file and rename the file to .env
