@@ -1,6 +1,6 @@
 # backend-boilerplate
 
-Backend boilerplate for node projects
+Backend boilerplate for node projects (express & mongo)
 
 ## How to use
 
