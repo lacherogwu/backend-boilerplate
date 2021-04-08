@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getController } = require('../utils');
+const { getController } = require('../utils/core');
 const controller = getController(__filename);
 const authentication = require('../middlewares/authentication');
 

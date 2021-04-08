@@ -42,7 +42,7 @@ const get_authenticate = catchAsync(async (req, res, next) => AppResponse(res, 2
 
 const get_logout = catchAsync(async (req, res, next) => {
 	res.cookie('jwt', '', { maxAge: 1 });
-	AppResponse(res, 200, 'logged out successfully!');
+	AppResponse(res, 200, 'Logged out successfully!');
 });
 
 module.exports = {

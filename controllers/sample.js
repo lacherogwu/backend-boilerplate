@@ -1,7 +1,7 @@
-const { getTodos } = require('../apis/sample');
+const { getTodos } = require('../apis/jsonplaceholder');
 
 const get_test = catchAsync(async (req, res, next) => {
-	AppResponse(res, 200, 'everything is working well!');
+	AppResponse(res, 200, 'Everything is working well!');
 });
 
 const get_getTodos = catchAsync(async (req, res, next) => {

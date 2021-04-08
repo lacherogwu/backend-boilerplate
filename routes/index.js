@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { mapDirFiles, getController } = require('../utils');
+const { mapDirFiles, getController } = require('../utils/core');
 
 const files = mapDirFiles(__dirname);
 

@@ -18,7 +18,7 @@ app.use(morgan('combined'));
 app.use(helmet()); // set secure headers
 
 // health check
-app.get(`/${defaultPath}/healthcheck`, (req, res, next) => AppResponse(res, 200, 'application is running successfully'));
+app.get(`/${defaultPath}/healthcheck`, (req, res, next) => AppResponse(res, 200, 'Application is running successfully'));
 
 // middlewares
 app.use(middlewares);
