@@ -10,6 +10,19 @@ The format of the controllers is: [method]\_[funcName]
 
 for e.g. get_sample, post_login
 
+#### Build-in Crud Operations
+
+There is a configured Class called "Crud" where you can setup crud operation to your collection
+In order to do that you just need to import the class and the model in your controller, create a new instance of the class with the model,
+and add the "...crud.controllers()" to the top of "module.exports" object
+
+You also can modify the crud controllers and implement your own controller,
+define the crud name (for e.g. post_find, or any other from the CRUD guide below)
+
+You can see /controllers/crud.js - put_update as an example
+
+Notice that the functional decalred after "...crud.controllers()" in the "module.exports", this is important so the function will overwrite the default behavior
+
 ### Routes
 
 There are 2 modes in routes: strict | flexible
@@ -59,6 +72,28 @@ for e.g.
 
 ```js
 const middlewares = [middleware1, middleware2]; // global middlewares
+```
+
+### CRUD
+
+- get_find
+- post_create
+- put_update
+- delete_delete
+
+Find:
+
+With find you can find one document or many, return only specific fields, sort and filter by specific criterias
+
+With code:
+
+```js
+// find(findOne = true/false, filter = { key: value }, fields = 'fields/-fields', sort = 'createdAt/-createdAt')
+// For fields and sort you can use or string or -string
+// just string will show all these fields
+// using -string will show all except these fields
+// on sort just string will sort by the fields, and -string will reverse the sort
+const docs = await crud.find(false, { title }, 'title description');
 ```
 
 ### Env configuration

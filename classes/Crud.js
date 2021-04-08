@@ -1,27 +1,43 @@
-class CrudCopy {
-	constructor(model) {
-		this.model = model;
+const { getQuery } = require('../utils');
+
+class Crud {
+	constructor(Model) {
+		this.Model = Model;
 	}
 
-	async find() {
-		return await this.model.find({});
+	async find(findOne, filter = {}, fields, sort) {
+		let query;
+
+		if (!findOne) {
+			query = this.Model.find(filter);
+			if (sort) query.sort(getQuery(sort));
+		} else {
+			query = this.Model.findOne(filter);
+		}
+
+		if (fields) {
+			query.select(getQuery(fields));
+		}
+
+		return await query;
 	}
 
 	async create(data) {
-		return await this.model.create(data);
+		return await this.Model.create(data);
 	}
 
 	async update(id, data) {
-		return await this.model.findByIdAndUpdate(id, data, { runValidators: true, new: true });
+		return await this.Model.findByIdAndUpdate(id, data, { runValidators: true, new: true });
 	}
 
 	async delete(id) {
-		return await this.model.findByIdAndDelete(id);
+		return await this.Model.findByIdAndDelete(id);
 	}
 
 	controllers() {
 		const get_find = catchAsync(async (req, res, next) => {
-			const docs = await this.find();
+			const { findOne, filter, fields, sort } = req.query;
+			const docs = await this.find(findOne, filter, fields, sort);
 
 			AppResponse(res, 200, docs);
 		});
@@ -50,4 +66,4 @@ class CrudCopy {
 	}
 }
 
-module.exports = CrudCopy;
+module.exports = Crud;
