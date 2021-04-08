@@ -15,6 +15,6 @@ const put_update = catchAsync(async (req, res, next) => {
 });
 
 module.exports = {
-	...crud.controllers(),
+	...crud.defaults(),
 	put_update,
 };

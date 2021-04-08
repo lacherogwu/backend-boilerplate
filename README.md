@@ -14,14 +14,14 @@ for e.g. get_sample, post_login
 
 There is a configured Class called "Crud" where you can setup crud operation to your collection
 In order to do that you just need to import the class and the model in your controller, create a new instance of the class with the model,
-and add the "...crud.controllers()" to the top of "module.exports" object
+and add the "...crud.defaults()" to the top of "module.exports" object
 
 You also can modify the crud controllers and implement your own controller,
 define the crud name (for e.g. post_find, or any other from the CRUD guide below)
 
 You can see /controllers/crud.js - put_update as an example
 
-Notice that the functional decalred after "...crud.controllers()" in the "module.exports", this is important so the function will overwrite the default behavior
+Notice that the functional decalred after "...crud.defaults()" in the "module.exports", this is important so the function will overwrite the default behavior
 
 ### Routes
 
@@ -80,6 +80,8 @@ const middlewares = [middleware1, middleware2]; // global middlewares
 - post_create
 - put_update
 - delete_delete
+
+You can also select specific controllers to be active by providing the "crud.defaults('find', 'update')" arguments (find, create, update, delete)
 
 Find:
 

@@ -64,6 +64,22 @@ class Crud {
 
 		return { get_find, post_create, put_update, delete_delete };
 	}
+
+	defaults(...items) {
+		if (!items.length) return this.controllers();
+
+		const values = {};
+		const match = {
+			find: 'get_find',
+			create: 'post_create',
+			update: 'put_update',
+			delete: 'delete_delete',
+		};
+
+		items.forEach(i => (values[match[i]] = this.controllers()[match[i]]));
+
+		return values;
+	}
 }
 
 module.exports = Crud;
