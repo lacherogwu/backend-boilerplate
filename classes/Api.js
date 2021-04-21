@@ -3,13 +3,15 @@ const axios = require('axios');
 class Api {
 	#instance;
 	constructor(data) {
+		const { baseUrl: baseURL, headers = {} } = data;
 		const config = {
-			baseURL: data.baseUrl,
+			baseURL,
+			headers,
 		};
 
 		// authorization
 		if (data.token) {
-			config.headers = { authorization: `Bearer ${data.token}` };
+			config.headers.authorization = `Bearer ${data.token}`;
 		}
 
 		if (data.username && data.password) {
