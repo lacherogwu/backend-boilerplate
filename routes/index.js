@@ -1,7 +1,9 @@
-const router = require('express').Router();
-const { mapDirFiles, getController } = require('../utils/core');
+import { Router } from 'express';
+import { mapDirFiles, getController } from '../utils/core.js';
 
-const files = mapDirFiles(__dirname);
+const router = Router();
+
+const files = await mapDirFiles(import.meta.url);
 
 const mode = 'flexible';
 
@@ -25,4 +27,4 @@ switch (mode) {
 	}
 }
 
-module.exports = router;
+export default router;

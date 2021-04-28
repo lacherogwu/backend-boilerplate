@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const validation = require('../utils/validations');
-const bcrypt = require('bcrypt');
+import mongoose from 'mongoose';
+import validation from '../utils/validations.js';
+import bcrypt from 'bcrypt';
 
 const Schema = mongoose.Schema;
 
@@ -48,4 +48,4 @@ modelSchema.methods.toJSON = function () {
 
 const Model = mongoose.model('user', modelSchema);
 
-module.exports = Model;
+export default Model;

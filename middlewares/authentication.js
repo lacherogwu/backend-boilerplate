@@ -1,7 +1,7 @@
-const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
 
-module.exports = catchAsync(async (req, res, next) => {
+export default catchAsync(async (req, res, next) => {
 	const { jwt: token } = req.cookies;
 
 	if (!token) throw new AppError('Authentication failed', 401);

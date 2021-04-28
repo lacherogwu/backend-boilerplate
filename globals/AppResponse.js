@@ -1,4 +1,4 @@
-module.exports = (res, status, data = {}, message) => {
+export default (res, status, data = {}, message) => {
 	if (typeof data === 'string') {
 		message = data;
 		data = {};

@@ -4,4 +4,4 @@ const getQuery = val =>
 		.map(v => v.trim())
 		.join(' ');
 
-module.exports = { getQuery };
+export { getQuery };

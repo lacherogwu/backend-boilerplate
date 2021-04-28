@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 
 class Api {
 	#instance;
@@ -40,4 +40,4 @@ class Api {
 	}
 }
 
-module.exports = Api;
+export default Api;

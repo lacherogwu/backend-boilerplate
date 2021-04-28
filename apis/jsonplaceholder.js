@@ -1,4 +1,4 @@
-const Api = require('../classes/Api');
+import Api from '../classes/Api.js';
 
 const instance = new Api({
 	baseUrl: 'https://jsonplaceholder.typicode.com',
@@ -10,6 +10,4 @@ const getTodos = async id => {
 	return data;
 };
 
-module.exports = {
-	getTodos,
-};
+export { getTodos };
