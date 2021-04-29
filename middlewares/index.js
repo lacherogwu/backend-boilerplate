@@ -1,9 +1,9 @@
-const express = require('express');
-const { mapDirFiles } = require('../utils/core');
-const cookieParser = require('cookie-parser');
+import express from 'express';
+import { mapDirFiles } from '../utils/core.js';
+import cookieParser from 'cookie-parser';
 
 const router = express.Router();
-const files = mapDirFiles(__dirname, 'values', 'global');
+const files = await mapDirFiles(import.meta.url, 'values', 'global');
 
 // prettier-ignore
 [
@@ -12,4 +12,4 @@ const files = mapDirFiles(__dirname, 'values', 'global');
     ...files,
 ].forEach(md => router.use(md));
 
-module.exports = router;
+export default router;

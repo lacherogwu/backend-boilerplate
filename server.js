@@ -1,21 +1,18 @@
-require('dotenv').config();
-require('./globals');
-const app = require('./app');
-const mongoose = require('mongoose');
+import './globals/index.js';
+import app from './app.js';
+import mongoose from 'mongoose';
 
 const port = process.env.PORT || 3000;
 const dbURI = process.env.DB_URI;
 
-(async () => {
-	// db connection
-	await mongoose.connect(dbURI, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useFindAndModify: false,
-		useCreateIndex: true,
-	});
-	app.listen(port, () => console.log(`listening at http://localhost:${port}`));
-})();
+// db connection
+await mongoose.connect(dbURI, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useFindAndModify: false,
+	useCreateIndex: true,
+});
+app.listen(port, () => console.log(`listening at http://localhost:${port}`));
 
 // handle unhandled rejection
 process.on('unhandledRejection', err => {

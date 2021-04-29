@@ -51,9 +51,9 @@ const devError = (err, res) => {
 	});
 };
 
-const response = process.env.NODE_ENV === 'development' ? devError : prodError;
+const response = process.env.NODE_ENV === 'production' ? prodError : devError;
 
-module.exports = (err, req, res, next) => {
+export default (err, req, res, next) => {
 	// error types handler
 	if (err.isAxiosError) err = axiosError(err);
 	else if (err.name === 'CastError') err = dbErrors.castError(err);

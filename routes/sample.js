@@ -1,6 +1,8 @@
-const router = require('express').Router();
-const { getController } = require('../utils/core');
-const controller = getController(__filename);
+import { Router } from 'express';
+import { getController } from '../utils/core.js';
+
+const router = Router();
+const controller = await getController(import.meta.url);
 
 // route middleware configuration || funcName: [middlewares]
 const md = {};
@@ -14,4 +16,4 @@ Object.entries(controller).forEach(([key, value]) => {
 	router[method](`/${funcName}`, ...middlewares, value);
 });
 
-module.exports = router;
+export default router;

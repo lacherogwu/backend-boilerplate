@@ -1,5 +1,5 @@
-const User = require('../models/User');
-const jwt = require('jsonwebtoken');
+import User from '../models/User.js';
+import jwt from 'jsonwebtoken';
 
 const maxAge = 60 * 60 * 24 * 28;
 const createToken = id => {
@@ -45,7 +45,7 @@ const get_logout = catchAsync(async (req, res, next) => {
 	AppResponse(res, 200, 'Logged out successfully!');
 });
 
-module.exports = {
+export default {
 	post_signup,
 	post_login,
 	get_authenticate,

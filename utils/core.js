@@ -1,24 +1,25 @@
-const fs = require('fs');
+import fs from 'fs';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const mapDirFiles = (path, type, filter) => {
+const mapDirFiles = async (path, type, filter) => {
+	path = dirname(fileURLToPath(path));
 	const files = fs.readdirSync(path).filter(i => (filter ? i.includes(`${filter}_`) : i !== 'index.js'));
 
-	switch (type) {
-		case 'values':
-			return files.map(i => require(`${path}/${i}`));
-		default:
-			return files.map(i => ({
-				[i.replace('.js', '')]: require(`${path}/${i}`),
-			}));
-	}
+	const promises = files.map(i => import(`${path}/${i}`));
+	const result = await Promise.all(promises);
+	const mapped = result.map(i => i.default);
+
+	if (type === 'values') return mapped;
+
+	return files.map((name, i) => ({
+		[name.replace('.js', '')]: mapped[i],
+	}));
 };
 
-const getController = path => {
+const getController = async path => {
 	const fileName = /[^/]*$/.exec(path)[0];
-	return require(`../controllers/${fileName}`);
+	return (await import(`../controllers/${fileName}`)).default;
 };
 
-module.exports = {
-	mapDirFiles,
-	getController,
-};
+export { mapDirFiles, getController };

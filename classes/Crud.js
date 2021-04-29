@@ -1,4 +1,4 @@
-const { getQuery } = require('../utils');
+import { getQuery } from '../utils/index.js';
 
 class Crud {
 	constructor(Model) {
@@ -82,4 +82,4 @@ class Crud {
 	}
 }
 
-module.exports = Crud;
+export default Crud;
